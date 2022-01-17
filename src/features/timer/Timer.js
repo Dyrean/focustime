@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, Vibration, Platform } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
-import { useKeepAwake } from 'expo-keep-awake';
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Vibration, Platform } from "react-native";
+import { ProgressBar } from "react-native-paper";
+import { useKeepAwake } from "expo-keep-awake";
 
-import { colors } from '../../utils/colors';
-import { spacing } from '../../utils/sizes';
-import { Countdown } from '../../components/Countdown';
-import { RoundedButton } from '../../components/RoundedButton';
-import { Timing } from './Timing';
+import { colors } from "../../utils/colors";
+import { spacing } from "../../utils/sizes";
+import { Countdown } from "../../components/Countdown";
+import { RoundedButton } from "../../components/RoundedButton";
+import { Timing } from "./Timing";
 
-const DEFAULT_TIME = 1;
+const DEFAULT_TIME = 0.1;
 
 export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   useKeepAwake();
@@ -23,7 +23,7 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   };
 
   const vibrate = () => {
-    if (Platform.Os === 'ios') {
+    if (Platform.Os === "ios") {
       const interval = setInterval(() => Vibration.vibrate(), 1000);
       setTimeout(() => clearInterval(interval), 10000);
     } else {
@@ -89,24 +89,24 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.white,
-    textAlign: 'center',
+    textAlign: "center",
   },
   task: {
     color: colors.white,
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
   },
   countdown: {
     flex: 0.5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonWrapper: {
     flex: 0.3,
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: spacing.md,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   clearSubject: {
     paddingBottom: spacing.lg,
